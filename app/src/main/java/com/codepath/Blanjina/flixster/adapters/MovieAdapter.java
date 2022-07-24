@@ -10,8 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.module.AppGlideModule;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,10 +23,13 @@ import java.util.List;
 
 
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
+public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
     List<Movie> movies;
+    public static int populaire= 0;
+    public static int m_populaire = 1;
+
 
     public MovieAdapter(Context context, List<Movie> movies) {
         this.context = context;
@@ -36,22 +38,41 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        RecyclerView.ViewHolder viewHolder;
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         Log.d("MovieAdapter","onCreateViewHolder");
 
-        View movieView= LayoutInflater.from(context).inflate(R.layout.item_movie,parent,false);
+        if (viewType==0){
+            View movieView= LayoutInflater.from(context).inflate(R.layout.popular_movies,parent,false);
+            viewHolder=new  ViewHolder1(movieView);
+        }
+        else{
+            View movieView= LayoutInflater.from(context).inflate(R.layout.item_movie,parent,false);
 
-        return new ViewHolder(movieView);
+            viewHolder= new ViewHolder(movieView);
+        }
+
+
+
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Log.d("MovieAdapter","onBindViewHolder"+ position);
-
-
         Movie movie= movies.get(position);
-        
-        holder.bind(movie);
+
+        if (holder.getItemViewType()==0){
+            ViewHolder1 v = (ViewHolder1) holder;
+            v.bind(movie);
+
+        }
+        else{
+            ViewHolder l = (ViewHolder) holder;
+            l.bind(movie);
+        }
+
     
     }
 
@@ -60,6 +81,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return movies.size();
     }
 
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if (movies.get(position).getRating() >=5) {
+            return populaire;
+        }
+        else  {
+            return m_populaire;
+        }
+
+    }
+
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvTitle;
         TextView tvOverview;
@@ -67,12 +102,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-
-
-
             tvTitle=itemView.findViewById(R.id.tvTitle);
             tvOverview=itemView.findViewById(R.id.tvOverview);
             ivPoster= itemView.findViewById(R.id.ivPoster);
+
 
         }
 
@@ -90,10 +123,38 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
            Glide.with(context).load(imageURL)
                    .placeholder(R.drawable.image4)
-                   .into(ivPoster)
-
-                   ;
+                   .into(ivPoster);
 
         }
     }
+
+    public class ViewHolder1 extends RecyclerView.ViewHolder {
+
+        private ImageView imageView;
+
+        public ViewHolder1(View v) {
+            super(v);
+            imageView = (ImageView) v.findViewById(R.id.tVImage);
+        }
+
+        public ImageView getImageView() {
+            return imageView;
+        }
+
+        public void setImageView(ImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        public void bind(Movie movie) {
+            Glide.with(context).load(movie.getBackdropPath())
+                    .placeholder(R.drawable.image4)
+                    .into(imageView);
+
+        }
+
+
+    }
+
+
+
 }

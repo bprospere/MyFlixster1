@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Blanjina/AndroidStudioProjects/MyFlixster1/app/src/main/res/drawable-land/popular_movies1.xml" value="0.1915" />
+        <entry key="..\:/Users/Blanjina/AndroidStudioProjects/MyFlixster1/app/src/main/res/layout-land/popular_movie.xml" value="0.103125" />
+        <entry key="..\:/Users/Blanjina/AndroidStudioProjects/MyFlixster1/app/src/main/res/layout-land/popular_movies.xml" value="0.1" />
+        <entry key="..\:/Users/Blanjina/AndroidStudioProjects/MyFlixster1/app/src/main/res/layout-land/popular_movies1.xml" value="0.4375" />
+        <entry key="..\:/Users/Blanjina/AndroidStudioProjects/MyFlixster1/app/src/main/res/layout/item_movie.xml" value="0.1" />
+        <entry key="..\:/Users/Blanjina/AndroidStudioProjects/MyFlixster1/app/src/main/res/layout/popular_movies.xml" value="0.1" />
+        <entry key="..\:/Users/Blanjina/AndroidStudioProjects/MyFlixster1/app/src/main/res/layout/popular_movies1.xml" value="0.1" />
         <entry key="..\:/Users/Blanjina/AndroidStudioProjects/codepath/Flixster2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.204" />
         <entry key="..\:/Users/Blanjina/AndroidStudioProjects/codepath/Flixster2/app/src/main/res/layout-land/item_movie.xml" value="0.1296875" />
         <entry key="..\:/Users/Blanjina/AndroidStudioProjects/codepath/Flixster2/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
