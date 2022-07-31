@@ -31,16 +31,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView rvMovies= findViewById(R.id.rvMovies);
         movies=new ArrayList<>();
-
+        AsyncHttpClient client=new AsyncHttpClient();
+        RecyclerView rvMovies= findViewById(R.id.rvMovies);
         MovieAdapter movieAdapter=new MovieAdapter(this,movies);
-
         rvMovies.setAdapter(movieAdapter);
-
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
-        AsyncHttpClient client=new AsyncHttpClient();
         client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
