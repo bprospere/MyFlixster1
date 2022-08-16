@@ -1,3 +1,4 @@
+![VideoFlixster](https://user-images.githubusercontent.com/93800102/184942402-fdb05f23-440f-4cd3-9da6-5393a8f44db0.gif)
 
 `NOTE` Paste this template at the top of your existing `README.md` file from part 1 of this assignment. (🚫 Remove this paragraph after after checking off completed user stories)
 
